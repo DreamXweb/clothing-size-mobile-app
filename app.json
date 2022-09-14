@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "size-match-mobile-app",
+    "slug": "size-match-mobile-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

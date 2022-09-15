@@ -1,4 +1,4 @@
-# ![SizeMatch icon](https://dreamxweb.com/size-match/ic_launcher.png) SizeMatch
+# ![SizeMatch icon](https://dreamxweb.com/size-match/ip_launcher_3.png) SizeMatch
 
 
 The SizeMatch mobile app allows shoppers to look up the exact size of clothing from a selected brand.

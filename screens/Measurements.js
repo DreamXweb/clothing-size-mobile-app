@@ -2,7 +2,7 @@ import {ScrollView, View, Text, TextInput, Button} from "react-native";
 import {defaultStyles} from "../styles/defaultStyles";
 import {createContext, useContext, useState} from "react";
 import {MainContext} from "../contexts/MainContext";
-import {trimNumbers, validateNumbers, log} from "../common-js/common-js";
+import {trimNumbers, validateNumbers} from "../common-js/common-js";
 import Toast from 'react-native-toast-message';
 
 const measurementsConstraints = {
@@ -52,7 +52,7 @@ const MeasurementsContext = createContext(null);
 const coefficient = 2.54;
 
 // TODO try react hook form ...
-export const Measurements = ({setMeasurements}) => {
+export const Measurements = ({navigation, setMeasurements}) => {
 
     // noinspection JSCheckFunctionSignatures
     const {gender, measurements, metricSystem, isCm} = useContext(MainContext);
@@ -60,7 +60,7 @@ export const Measurements = ({setMeasurements}) => {
     const isWoman = gender === 'Woman';
 
     const [newMeasurements, setNewMeasurements] = useState(measurements);
-    const [red, setRed] = useState({upperBust: true});
+    const [red, setRed] = useState({});
 
     const save = () => {
 
@@ -87,15 +87,12 @@ export const Measurements = ({setMeasurements}) => {
         }
 
         setMeasurements({...data});
-
         Toast.show({
             type: 'success',
             text1: 'Saved!',
             text2: 'Your measurements are successfully saved 😉'
         });
-
-        log({data});
-
+        navigation.navigate('SelectBrands');
     }
 
     return <MeasurementsContext.Provider value={{newMeasurements, setNewMeasurements, red, setRed}}>

@@ -9,8 +9,11 @@ import Toast from 'react-native-toast-message';
 import Preference from 'react-native-preference';
 import {notifyError} from "./common-js/common-js";
 import {log} from "./common-js/common-js";
+import {SelectBrands} from "./screens/SelectBrands";
 
 const Tab = createBottomTabNavigator();
+
+// TODO kill all warnings when restarting the app. Connected with prefs ...
 
 export default function App() {
 
@@ -33,14 +36,17 @@ export default function App() {
     neckline: {cm: Preference.get('necklineCm') || 39, in: Preference.get('necklineIn') || 15.25}
   });
 
+  // TODO loading of salvation
   useEffect(() => {
     Preference.set('gender', gender + '').then().catch(notifyError);
   }, [gender]);
 
+  // TODO loading of salvation
   useEffect(() => {
     Preference.set('metricSystem', metricSystem + '').then().catch(notifyError);
   }, [metricSystem]);
 
+  // TODO loading of salvation
   useEffect(() => {
     log({measurements});
     Preference.set('upperBustCm', measurements.underBust.cm + '').then().catch(notifyError);
@@ -76,9 +82,16 @@ export default function App() {
             />
             <Tab.Screen
                 name={'Measurements'}
-                children={() => <Measurements setMeasurements={setMeasurements} />}
-                options={{tabBarIcon: ({ focused, color, size }) =>
-                      <Ionicons name={focused ? 'ios-ellipsis-horizontal-circle' : 'ios-ellipsis-horizontal-circle-outline'} size={size} color={color} />,
+                children={({navigation}) => <Measurements navigation={navigation} setMeasurements={setMeasurements} />}
+                options={{tabBarIcon: ({ color, size }) =>
+                      <Ionicons name={'ios-ellipsis-horizontal-circle'} size={size} color={color} />,
+                }}
+            />
+            <Tab.Screen
+                name={'SelectBrands'}
+                children={() => <SelectBrands />}
+                options={{tabBarIcon: ({color, size }) =>
+                      <Ionicons name={'search'} size={size} color={color} />,
                 }}
             />
           </Tab.Navigator>

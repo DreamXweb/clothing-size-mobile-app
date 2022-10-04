@@ -6,9 +6,9 @@ import {trimNumbers, validateNumbers} from "../common-js/common-js";
 import Toast from 'react-native-toast-message';
 
 const measurementsConstraints = {
-    upperBust: {cm: {min: 60, max: 150}, in: {min: 25, max: 60}, name: 'Upper bust'},
-    bustOrChest: {cm: {min: 60, max: 150}, in: {min: 25, max: 60}, name: 'Bust/Chest'},
-    underBust: {cm: {min: 60, max: 150}, in: {min: 25, max: 60}, name: 'Under bust'},
+    upperBust: {cm: {min: 60, max: 160}, in: {min: 25, max: 70}, name: 'Upper bust'},
+    bustOrChest: {cm: {min: 60, max: 160}, in: {min: 25, max: 70}, name: 'Bust/Chest'},
+    underBust: {cm: {min: 60, max: 160}, in: {min: 25, max: 70}, name: 'Under bust'},
     waist: {cm: {min: 50, max: 140}, in: {min: 21, max: 50}, name: 'Waist'},
     hips: {cm: {min: 70, max: 150}, in: {min: 25, max: 60}, name: 'Hips'},
     armLength: {cm: {min: 50, max: 100}, in: {min: 20, max: 30}, name: 'Arm length'},

@@ -10,6 +10,7 @@ import Preference from 'react-native-preference';
 import {notifyError} from "./common-js/common-js";
 import {log} from "./common-js/common-js";
 import {SelectBrands} from "./screens/SelectBrands";
+import {Sizes} from "./screens/Sizes";
 
 const Tab = createBottomTabNavigator();
 
@@ -89,10 +90,18 @@ export default function App() {
             />
             <Tab.Screen
                 name={'SelectBrands'}
-                children={() => <SelectBrands />}
+                children={({navigation}) => <SelectBrands navigation={navigation} />}
                 options={{tabBarIcon: ({color, size }) =>
                       <Ionicons name={'search'} size={size} color={color} />,
                 }}
+            />
+            <Tab.Screen
+                name={'Sizes'}
+                children={({route}) => <Sizes route={route} />}
+                options={({route}) => ({tabBarIcon: ({color, size }) =>
+                      <Ionicons name={'resize'} size={size} color={color} />,
+                  title: route?.params?.brand ? route.params.brand : 'Sizes',
+                })}
             />
           </Tab.Navigator>
         </NavigationContainer>
